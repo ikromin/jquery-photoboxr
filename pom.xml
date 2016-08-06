@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<groupId>net.igorkromin</groupId>
+	<artifactId>jquery-ui-photoboxr</artifactId>
+	<version>0.1</version>
+	
+	<name>jQuery Photoboxr Plugin</name>
+	<description>A jQuery UI compatible plugin that frames photos into a standard constant ratio box with optional panoramic controls and FancyBox integration.</description>
+	<packaging>pom</packaging>
+
+	<build>
+		<plugins>
+		  <plugin>
+			<groupId>com.samaxes.maven</groupId>
+			<artifactId>minify-maven-plugin</artifactId>
+			<version>1.7.4</version>
+			<executions>
+				<execution>
+					<id>default-minify</id>
+					<phase>package</phase>
+					<goals>
+						<goal>minify</goal>
+					</goals>
+					<configuration>
+						
+						<webappSourceDir>${basedir}/src</webappSourceDir>
+						
+						<cssSourceDir>css</cssSourceDir>
+						<cssSourceFiles>
+							<cssSourceFile>jquery-ui-photoboxr.css</cssSourceFile>
+						</cssSourceFiles>
+						<cssFinalFile>jquery-ui-photoboxr.css</cssFinalFile>
+
+						<jsSourceDir>js</jsSourceDir>
+						<jsSourceFiles>
+							<jsSourceFile>jquery-ui-photoboxr.js</jsSourceFile>
+						</jsSourceFiles>
+						<jsFinalFile>jquery-ui-photoboxr.js</jsFinalFile>
+						
+						<cssEngine>YUI</cssEngine>
+						
+						<jsEngine>CLOSURE</jsEngine>
+						<closureCompilationLevel>SIMPLE_OPTIMIZATIONS</closureCompilationLevel>
+						
+					</configuration>
+				</execution>
+			</executions>
+		  </plugin>
+		</plugins>
+	</build>
+
+</project>

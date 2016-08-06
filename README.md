@@ -82,6 +82,14 @@ $('#photoboxr-example').photoboxr({
 .photoboxr('wrapper')
 .appendTo(container);
 ```
+# Building a Minified Version
+To build the minified version run the following Maven command in the directory where the *pom.xml* file is found:
+
+```
+mvn clean package
+```
+
+The minified version will then be available in the *target* directory.
 
 # License
 
