@@ -31,7 +31,8 @@
 		enabled: true,                     // whether scroll controls are enabled
 		disabledOpacity: 0.5,              // scroll control overlay disabled opacity
 		enabledOpacity: 0.9,               // scroll control overlay enabled opacity
-		wrapSizingClass: 'ui-pbxr-full',  // wrapping DIV CSS sizing class
+		threshold: 1.05,                   // % threshold that src image must be larger by to enable
+		wrapSizingClass: 'ui-pbxr-full',   // wrapping DIV CSS sizing class
 		loadingOverlay: 'Loading image...' // image loading overlay text
 	},
 	
@@ -101,18 +102,24 @@
 
 		// remove loading placeholder
 		pp.children('.ui-pbxr-loading').remove();
+		
+		var imgWidth = Math.floor(img.naturalWidth * scalar);
+		var imgHeight = Math.floor(img.naturalHeight * scalar);
+		var exceedPct;
 
-		if (Math.floor(img.naturalWidth * scalar) > pp.width()) {
+		if (imgWidth > pp.width()) {
 			this._direction = 0;
 			this._overlay = $('<div class="ui-pbxr-ind ui-pbxr-horz"></div>');
+			exceedPct = imgWidth / pp.width();
 		}
 
-		if (Math.floor(img.naturalHeight * scalar) > pp.height()) {
+		if (imgHeight > pp.height()) {
 			this._direction = 1;
 			this._overlay = $('<div class="ui-pbxr-ind ui-pbxr-vert"></div>');
+			exceedPct = imgHeight / pp.height();
 		}
 
-		if (this._direction != undefined) {
+		if (this.options.threshold < exceedPct && this._direction != undefined) {
 			var t = this;
 			this._overlay.appendTo(pp).on('click', function(e) { t._toggle(e); });
 
@@ -151,12 +158,12 @@
 		if (this._direction == 0) {
 			var dx = (e.screenX - this._dStart) / this._dScalar;
 			this._curAdj = this._constrain(this._lastAdj + dx, this._maxAdj);
-			this.element.css('left', Math.round(50 + this._curAdj) + '%');
+			this.element.css('left', Math.floor(50 + this._curAdj) + '%');
 		}
 		else {
 			var dy = (e.screenY - this._dStart) / this._dScalar;
 			this._curAdj = this._constrain(this._lastAdj + dy, this._maxAdj);
-			this.element.css('top', Math.round(50 + this._curAdj) + '%');
+			this.element.css('top', Math.floor(50 + this._curAdj) + '%');
 		}
 	},
 

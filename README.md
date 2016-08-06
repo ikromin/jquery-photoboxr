@@ -36,11 +36,29 @@ rel                    // Fancybox galley rel tag
 enabled                // whether scroll controls are enabled
 disabledOpacity        // scroll control overlay disabled opacity
 enabledOpacity         // scroll control overlay enabled opacity
+threshold              // % threshold that src image must be larger by to enable
 wrapSizingClass        // wrapping DIV CSS sizing class
 loadingOverlay         // image loading overlay text
 ```
 
-The *wrapSizingClass* defines the width of the DIV that will wrap your photo, there are three classes provided and stretch to 100%, 50% and 33%, these are: *ui-pbxr-full*, *ui-pbxr-half* and *ui-pbxr-third* respectively.
+**src** -  [default = *undefined*] Must be provided in order for the plugin to activate.
+
+**href** - [default = *undefined*] If provided will enable Fancybox integration, should point to the unscaled, full resolution version of the photo, this is shown in the Fancybox pop up.
+
+**rel** - [default = *'gallery'*] The *rel* attribute value used with Fancybox integration, for grouping photos into the same gallery.
+
+**enabled** - [default = *true*] Whether the scroll controls are enabled after initialisation. Useful to disable if on a mobile and using *jQuery UI Touch Punch*.
+
+**disabledOpacity** - [default = *0.5*] Opacity of the scroll control overlay when disabled.
+
+**enabledOpacity** - [default = *0.9*] Opacity of the scroll control overlay when enabled.
+
+**threshold** - [default = *1.05*] Image size threshold cut off to initialise the plugin. Image size must exceed this % value in either width/height otherwise the plugin will not initialise.  Specified as a decimal with default value meaning 105% i.e. source image is 5% larger than the viewport. Useful to not show scroll controls when source images are only slightly larger than the viewport.
+
+**wrapSizingClass** - [default = *'ui-pbxr-full'*] CSS class used for the DIV that will wrap the <img> element. There are three classes provided and stretch to 100%, 50% and 33%, these are: *ui-pbxr-full*, *ui-pbxr-half* and *ui-pbxr-third* respectively.
+
+**loadingOverlay** - [default = *'Loading image...'*] Overlay text displayed while the image is loading.
+
 # Methods
 These methods can be called to control the plugin after it has been initialised.
 
@@ -51,7 +69,10 @@ Calling a method is done using standard jQuery UI way i.e. *.photoboxr('wrapper'
 scroll
 	input: 'on'|'off' will enable/disable scroll controls
 	no input: returns the state of the scroll controls
+```
 
+```
+// returns the wrapper DIV around the <img> element
 wrapper
 	no input: returns the wrapping DIV created around the <img> element
 ```
