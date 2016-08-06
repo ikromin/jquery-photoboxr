@@ -48,7 +48,7 @@ The *wrapSizingClass* defines the width of the DIV that will wrap your photo, th
 
 Photoboxr requires an Image element that hasn't had the image loaded yet.
 
-See the provided *example.html* file for a full implementation.
+See the provided [example.html](https://github.com/ikromin/jquery-photoboxr/raw/master/example.html) file for a full implementation.
 
 HTML:
 
