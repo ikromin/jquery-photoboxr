@@ -42,7 +42,7 @@
 			this.options.enabled = true;
 			this._mouseInit();
 		}
-		else if (onoff = 'off') {
+		else if (onoff == 'off') {
 			this._overlay.css('opacity', this.options.disabledOpacity);
 			this.options.enabled = false;
 			this._mouseDestroy();
