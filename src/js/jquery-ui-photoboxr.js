@@ -91,7 +91,7 @@
 		// determine whether image has vertical/horizontal bias
 		var ratio = img.height/img.width;
 		var scalar = 1; // used since Chrome rounds img dimensions up
-		if (ratio < 0.75) { // 4:3 ratio
+		if (ratio <= 0.75) { // 4:3 ratio
 			scalar = pp.height() / img.naturalHeight;
 			p.addClass('ui-pbxr-landscape');
 		}

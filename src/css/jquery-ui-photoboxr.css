@@ -44,10 +44,9 @@
 	bottom: 0;
 	right: 0;
 	left: 0;
-	background-color: #999;
 	overflow-x: hidden;
 	overflow-y: hidden;
-	border: 2px solid #f5f5f5;
+	margin: 2px;
 }
 
 .ui-pbxr-img {
@@ -61,23 +60,25 @@
 
 .ui-pbxr-loading {
 	position: absolute;
-	left: 3px;
-	top: 3px;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
 	color: white;
 	z-index: 5;
-	background-color: black;
-	padding: 2px;
-	padding-left: 3px;
-	padding-right: 3px;
+	background-color: #aaa;
+	padding: 3px;
+	padding-left: 5px;
+	padding-right: 5px;
 	font-weight: bold;
-	border-radius: 3px;
-	opacity: 0.7;
 	font-size: 10pt;
+	margin: 2px;
 }
 
 .ui-pbxr-ind {
 	position: absolute;
-	right: 4px;
+	right: 0;
+	margin: 5px;
 	background-size: auto 100%;
 	background-repeat: no-repeat;
 	background-position: right;
@@ -87,7 +88,7 @@
 
 .ui-pbxr-expand {
 	opacity: 0.9;
-	top: 4px;
+	top: 0;
 	width: 7%;
 	height: 7%;
 	min-height: 32px;
@@ -97,7 +98,7 @@
 
 .ui-pbxr-horz {
 	opacity: 0.5;
-	bottom: 4px;
+	bottom: 0;
 	width: 12%;
 	height: 4.314606741573%;
 	min-width: 60px;
@@ -107,7 +108,7 @@
 
 .ui-pbxr-vert {
 	opacity: 0.5;
-	bottom: 3px;
+	bottom: 0;
 	width: 4.92592592592597%;
 	height: 10.5%;
 	min-height: 56px;
@@ -127,7 +128,7 @@
 
 @media screen and (max-width: 768px) {
 	.ui-pbxr-clip {
-		border-width: 1px;
+		margin: 1px;
 	}
 	
 	.ui-pbxr-expand {
