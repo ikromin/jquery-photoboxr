@@ -41,6 +41,20 @@ loadingOverlay         // image loading overlay text
 ```
 
 The *wrapSizingClass* defines the width of the DIV that will wrap your photo, there are three classes provided and stretch to 100%, 50% and 33%, these are: *ui-pbxr-full*, *ui-pbxr-half* and *ui-pbxr-third* respectively.
+# Methods
+These methods can be called to control the plugin after it has been initialised.
+
+Calling a method is done using standard jQuery UI way i.e. *.photoboxr('wrapper')* will call the *wrapper()* method.
+
+```
+// enables/disables scroll controls or returns whether scroll controls are enabled
+scroll
+	input: 'on'|'off' will enable/disable scroll controls
+	no input: returns the state of the scroll controls
+
+wrapper
+	no input: returns the wrapping DIV created around the <img> element
+```
 
 # Example
 
