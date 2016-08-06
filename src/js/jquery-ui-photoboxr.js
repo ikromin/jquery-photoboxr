@@ -74,7 +74,7 @@
 			}
 			
 			// add Fancybox overlay
-			if (o.href != undefined) {
+			if (o.href != undefined && $.fancybox) {
 				t._wrapper.append('<a class="fancybox"><div class="ui-pbxr-ind ui-pbxr-expand"></div></a>')
 					.find('.fancybox')
 					.attr({href: o.href, rel: o.rel});
