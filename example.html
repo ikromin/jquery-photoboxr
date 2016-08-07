@@ -18,21 +18,19 @@
 	</head>
 	<body>
 		<div id="photoboxr-container" style="width: 100%;">
-			<img id="photoboxr-example">
-			<img id="photoboxr-example2">
 		</div>
 		
 		<script>
 			var container = $('#photoboxr-container');
 		
-			$('#photoboxr-example').photoboxr({
+			$(new Image()).photoboxr({
 				src: 'fog_panorama.jpg',
 				wrapSizingClass: 'ui-pbxr-half'
 			})
 			.photoboxr('wrapper')
 			.appendTo(container);
 		
-			$('#photoboxr-example2').photoboxr({
+			$(new Image()).photoboxr({
 				src: 'fog_panorama90.jpg',
 				wrapSizingClass: 'ui-pbxr-half'
 			})

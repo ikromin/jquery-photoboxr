@@ -89,14 +89,15 @@ HTML:
 
 ```
 <div id="photoboxr-container" style="width: 100%;">
-	<img id="photoboxr-example">
 </div>
 ```
 
 JavaScript:
 
 ```
-$('#photoboxr-example').photoboxr({
+var container = $('#photoboxr-container');
+
+$(new Image()).photoboxr({
 	src: 'fog_panorama.jpg',
 	wrapSizingClass: 'ui-pbxr-half'
 })
