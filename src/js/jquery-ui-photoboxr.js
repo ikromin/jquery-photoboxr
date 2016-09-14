@@ -126,6 +126,9 @@
 			if (this.options.enabled) {
 				this.scroll('on');
 			}
+			else {
+				this.scroll('off');
+			}
 		}
 	},
 
