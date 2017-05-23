@@ -4,7 +4,7 @@
 	
 	<groupId>net.igorkromin</groupId>
 	<artifactId>jquery-ui-photoboxr</artifactId>
-	<version>0.1</version>
+	<version>0.2</version>
 	
 	<name>jQuery Photoboxr Plugin</name>
 	<description>A jQuery UI compatible plugin that frames photos into a standard constant ratio box with optional panoramic controls and FancyBox integration.</description>
