@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<title>jQuery Photoboxr Plugin Example</title>
+		
+		<!-- jQuery -->
+		<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+		
+		<!-- jQuery UI -->
+		<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+		<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+
+		<!-- jQuery UI Touch Punch -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+		
+		<!-- Photoboxr -->
+		<link rel="stylesheet" href="src/css/jquery-ui-photoboxr.css">
+		<script src="src/js/jquery-ui-photoboxr.js"></script>
+	</head>
+	<body style="padding: 30px;">
+		<div id="photoboxr-container" style="width: 100%;">
+		</div>
+		
+		<script>
+			var container = $('#photoboxr-container');
+		
+			$(new Image()).photoboxr({
+				src: 'fog_panorama.jpg',
+				wrapSizingClass: 'ui-pbxr-full'
+			})
+			.photoboxr('wrapper')
+			.appendTo(container);
+		
+			$(new Image()).photoboxr({
+				src: 'fog_panorama.jpg',
+				wrapSizingClass: 'ui-pbxr-half'
+			})
+			.photoboxr('wrapper')
+			.appendTo(container);
+			
+			$(new Image()).photoboxr({
+				src: 'fog_panorama.jpg',
+				wrapSizingClass: 'ui-pbxr-third'
+			})
+			.photoboxr('wrapper')
+			.appendTo(container);
+		</script>
+	</body>
+</html>

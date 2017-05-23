@@ -1,5 +1,5 @@
 /*
-# Copyright 2016 Igor Kromin
+# Copyright 2016-2017 Igor Kromin
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,9 +17,9 @@
 
 	_dStart: undefined,    // drag start coordinate
 	_dScalar: undefined,   // Drag delta scalar
-	_lastAdj: 0,           // last % adjustment
-	_curAdj: 0,            // current % adjustment
-	_maxAdj: undefined,    // max % adjustment
+	_curPos: undefined,
+	_prevPos: 0,
+	_maxAdj: undefined,    // max px adjustment
 	_direction: undefined, // scroll direction 0 = horizontal, 1 = vertical
 	_overlay: undefined,   // overlay DIV for enable/disable toggle
 	_wrapper: undefined,   // wrapping DIV around the image
@@ -118,7 +118,7 @@
 			this._overlay = $('<div class="ui-pbxr-ind ui-pbxr-vert"></div>');
 			exceedPct = imgHeight / pp.height();
 		}
-
+		
 		if (this.options.threshold < exceedPct && this._direction != undefined) {
 			var t = this;
 			this._overlay.appendTo(pp).on('click', function(e) { t._toggle(e); });
@@ -129,9 +129,30 @@
 			else {
 				this.scroll('off');
 			}
+			
+			// enable window resize events only if this is a scrollable picture
+			$(window).resize(function (e) { t._imgResized(t); });
 		}
 	},
 
+	_imgResized: function(t) {
+		var p = t.element;
+		var pp = p.parents('.ui-pbxr');
+		
+		if (this._direction == 0) {
+			t._maxAdj = (p.width() - pp.width()) / 2;
+			t._curPos = t._constrain(t._prevPos, t._maxAdj);
+			t.element.css('margin-left', t._curPos + 'px');
+		}
+		else {
+			this._maxAdj = (p.height() - pp.height()) / 2;
+			t._curPos = t._constrain(t._prevPos, t._maxAdj);
+			t.element.css('margin-top', t._curPos + 'px');
+		}
+		
+		t._prevPos = t._curPos;
+	},
+	
 	_toggle: function(e) {
 		e.preventDefault();
 		this.scroll((this.options.enabled) ? 'off' : 'on');
@@ -145,13 +166,13 @@
 
 		if (this._direction == 0) {
 			this._dStart = e.screenX;
-			this._dScalar = pp.width() / 100;
-			this._maxAdj = ((p.width() - pp.width()) / 2) / pp.width() * 100;
+			this._dScalar = pp.width() / 500;
+			this._maxAdj = (p.width() - pp.width()) / 2;
 		}
 		else {
 			this._dStart = e.screenY;
-			this._dScalar = pp.height() / 100;
-			this._maxAdj = ((p.height() - pp.height()) / 2) / pp.height() * 100;
+			this._dScalar = pp.height() / 500;
+			this._maxAdj = (p.height() - pp.height()) / 2;
 		}
 	},
 
@@ -160,23 +181,23 @@
 
 		if (this._direction == 0) {
 			var dx = (e.screenX - this._dStart) / this._dScalar;
-			this._curAdj = this._constrain(this._lastAdj + dx, this._maxAdj);
-			this.element.css('left', Math.floor(50 + this._curAdj) + '%');
+			this._curPos = this._constrain(this._prevPos + dx, this._maxAdj);
+			this.element.css('margin-left', this._curPos + 'px');
 		}
 		else {
 			var dy = (e.screenY - this._dStart) / this._dScalar;
-			this._curAdj = this._constrain(this._lastAdj + dy, this._maxAdj);
-			this.element.css('top', Math.floor(50 + this._curAdj) + '%');
+			this._curPos = this._constrain(this._prevPos + dy, this._maxAdj);
+			this.element.css('margin-top', this._curPos + 'px');
 		}
 	},
 
 	_mouseStop: function(e) {
-		// Remember last adjustment so new drags won't 'pop' the image
-		this._lastAdj = this._curAdj;
+		// Remember last position so new drags won't 'pop' the image
+		this._prevPos = this._curPos;
 	},
 
 	/**
-	 * Constrains the adjustment percentage to the image dimensions.
+	 * Constrains the adjustment amount to the image dimensions.
 	 */
 	_constrain: function (val, maxVal) {
 		if (val > 0 && val > maxVal) {

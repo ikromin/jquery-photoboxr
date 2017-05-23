@@ -1,8 +1,8 @@
-# jQuery Photoboxr
+# jQuery Photoboxr 0.2
 
 A jQuery UI compatible plugin that frames photos into a standard constant ratio box with optional panoramic controls and FancyBox integration.
 
-This plugin started off as part of the [Travel &micro;Blog](https://travelblog.ws) photo viewing implementation and has since been split off as a reusable module.
+This plugin started off as part of the [Travel &micro;Blog](https://travelmicroblog.com) photo viewing implementation and has since been split off as a reusable module.
 
 The intent behind this plugin is to allow any sized photo with any aspect ratio to be displayed in a constant ratio (4:3) box. Having a predictable framing box allows for easier layouts of photos especially on 'wall' style inifnite scroll pages.
 
@@ -79,11 +79,11 @@ wrapper
 
 # Example
 
-![Photoboxr Example](https://github.com/ikromin/jquery-photoboxr/raw/master/screenshot.png "Photoboxr Example")
+![Photoboxr Example](https://github.com/ikromin/jquery-photoboxr/raw/0.2/screenshot.png "Photoboxr Example")
 
 Photoboxr requires an Image element that hasn't had the image loaded yet.
 
-See the provided [example.html](https://github.com/ikromin/jquery-photoboxr/raw/master/example.html) file for a full implementation.
+See the provided [example.html](https://github.com/ikromin/jquery-photoboxr/raw/0.2/example.html) file for a full implementation.
 
 HTML:
 
@@ -112,6 +112,18 @@ mvn clean package
 ```
 
 The minified version will then be available in the *target* directory.
+
+# Change Log
+
+**0.1**
+
+* Initial release
+
+**0.2**
+
+* Additional examples added showing multi size instances and FancyBox integration
+* Updated for a more slick look and feel
+* Switched offset calculation to pixels instead of using percentages
 
 # License
 
